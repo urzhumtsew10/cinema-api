@@ -9,9 +9,11 @@ import { OrderModule } from './order/order.module';
 import { FastifyMulterModule } from '@nest-lab/fastify-multer';
 import { ActorModule } from './actor/actor.module';
 import { FeedbackModule } from './feedback/feedback.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     UserModule,
     SessionModule,
     MovieModule,

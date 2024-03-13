@@ -13,13 +13,12 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
     UserModule,
     SessionModule,
     MovieModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://andrew:Pass321@electricitystore.7fcbtjd.mongodb.net/cinema',
-    ),
+    // MongooseModule.forRoot(
+    //   'mongodb+srv://andrew:Pass321@electricitystore.7fcbtjd.mongodb.net/cinema',
+    // ),
     FastifyMulterModule,
     OrderModule,
     ActorModule,

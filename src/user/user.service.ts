@@ -7,6 +7,7 @@ import { Model } from 'mongoose';
 import { DeleteResult } from 'typeorm/driver/mongodb/typings';
 import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
+import { ObjectIdColumn } from 'typeorm';
 
 @Injectable()
 export class UserService {
@@ -55,8 +56,13 @@ export class UserService {
     }
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    const currentUser = await this.findOne(id);
+    if (!currentUser) return false;
+    await this.userModule.findByIdAndUpdate(currentUser._id, {
+      password: await argon2.hash(updateUserDto.password),
+    });
+    return true;
   }
 
   async remove(id: string): Promise<DeleteResult> {

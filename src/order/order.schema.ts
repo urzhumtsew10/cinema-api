@@ -6,16 +6,16 @@ export type OrderDocument = Order & Document;
 @Schema()
 export class Order {
   @Prop()
-  userId: String;
+  userId: string;
 
   @Prop()
-  sessionId: String;
+  sessionId: string;
 
   @Prop()
-  numberSeat: String;
+  numberSeats: string[];
 
   @Prop()
-  price: Number;
+  price: number;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);

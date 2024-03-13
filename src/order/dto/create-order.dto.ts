@@ -2,11 +2,14 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateOrderDto {
   @IsNotEmpty()
-  userId: String;
+  userId: string;
 
   @IsNotEmpty()
-  numberSeat: Number;
+  numberSeats: string[];
 
   @IsNotEmpty()
-  sessionId: String;
+  sessionId: string;
+
+  @IsNotEmpty()
+  price: number;
 }

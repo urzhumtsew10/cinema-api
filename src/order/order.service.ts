@@ -15,19 +15,13 @@ export class OrderService {
   ) {}
 
   async create(createOrderDto: CreateOrderDto) {
-    const numberSeat: number = +createOrderDto.numberSeat;
-    if (numberSeat < 1 || numberSeat > 71) return false;
     try {
       const checkSessionId: Session = await this.sessionModule.findById(
         createOrderDto.sessionId,
       );
-      const checkSeat = (await this.orderModule.find()).filter(
-        (order) => +order.numberSeat === numberSeat,
-      )[0];
-      if (checkSessionId && !checkSeat) {
+      if (checkSessionId) {
         return await new this.orderModule({
           ...createOrderDto,
-          price: 100,
         }).save();
       }
       return false;

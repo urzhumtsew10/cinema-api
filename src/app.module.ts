@@ -9,16 +9,15 @@ import { OrderModule } from './order/order.module';
 import { FastifyMulterModule } from '@nest-lab/fastify-multer';
 import { ActorModule } from './actor/actor.module';
 import { FeedbackModule } from './feedback/feedback.module';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     UserModule,
     SessionModule,
     MovieModule,
-    // MongooseModule.forRoot(
-    //   'mongodb+srv://andrew:Pass321@electricitystore.7fcbtjd.mongodb.net/cinema',
-    // ),
+    MongooseModule.forRoot(
+      'mongodb+srv://andrew:Pass321@electricitystore.7fcbtjd.mongodb.net/cinema',
+    ),
     FastifyMulterModule,
     OrderModule,
     ActorModule,

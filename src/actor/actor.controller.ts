@@ -31,7 +31,7 @@ export class ActorController {
   @UseInterceptors(
     FileInterceptor('img', {
       storage: diskStorage({
-        destination: 'tmp',
+        destination: './tmp/uploads',
         filename: (req, file, callback) => {
           callback(null, file.originalname);
         },
@@ -45,7 +45,7 @@ export class ActorController {
 
   @Get('/img/:imgName')
   getFile(@Param('imgName') img): StreamableFile {
-    const file = createReadStream(join('tmp', `${img}`));
+    const file = createReadStream(join('./tmp/uploads', `${img}`));
     return new StreamableFile(file);
   }
 

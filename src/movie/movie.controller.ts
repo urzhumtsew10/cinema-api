@@ -27,43 +27,43 @@ export class MovieController {
     return this.movieService.create(createMovieDto);
   }
 
-  @Get('/file/:videoName')
-  getFile(@Param('videoName') video): StreamableFile {
-    const file = createReadStream(join('./uploads', `${video}`));
-    return new StreamableFile(file);
-  }
+  // @Get('/file/:videoName')
+  // getFile(@Param('videoName') video): StreamableFile {
+  //   const file = createReadStream(join('./uploads', `${video}`));
+  //   return new StreamableFile(file);
+  // }
 
-  @Get('/poster/:imgName')
-  getPoster(@Param('imgName') img): StreamableFile {
-    const file = createReadStream(join('./uploads', `${img}`));
-    return new StreamableFile(file);
-  }
+  // @Get('/poster/:imgName')
+  // getPoster(@Param('imgName') img): StreamableFile {
+  //   const file = createReadStream(join('./uploads', `${img}`));
+  //   return new StreamableFile(file);
+  // }
 
-  @Post('/file')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './uploads',
-        filename: (req, file, callback) => {
-          callback(null, file.originalname);
-        },
-      }),
-    }),
-  )
-  uploadFile(@UploadedFile() file) {}
+  // @Post('/file')
+  // @UseInterceptors(
+  //   FileInterceptor('file', {
+  //     storage: diskStorage({
+  //       destination: './uploads',
+  //       filename: (req, file, callback) => {
+  //         callback(null, file.originalname);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // uploadFile(@UploadedFile() file) {}
 
-  @Post('/poster')
-  @UseInterceptors(
-    FileInterceptor('img', {
-      storage: diskStorage({
-        destination: './uploads',
-        filename: (req, file, callback) => {
-          callback(null, file.originalname);
-        },
-      }),
-    }),
-  )
-  uploadPoster(@UploadedFile() file) {}
+  // @Post('/poster')
+  // @UseInterceptors(
+  //   FileInterceptor('img', {
+  //     storage: diskStorage({
+  //       destination: './uploads',
+  //       filename: (req, file, callback) => {
+  //         callback(null, file.originalname);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // uploadPoster(@UploadedFile() file) {}
 
   @Get()
   findAll() {

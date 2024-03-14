@@ -21,8 +21,8 @@ export class MovieService {
     if (uniqueActorsId.length !== createMovieDto.actors.length) return false;
     return await new this.movieModule({
       ...createMovieDto,
-      videoPath: `http://localhost:3333/movie/file/${createMovieDto.videoName}`,
-      imgPath: `http://localhost:3333/movie/file/${createMovieDto.imgName}`,
+      videoPath: `https://vercel.com/urzhumtsew10/cinema-api/movie/file/${createMovieDto.videoName}`,
+      imgPath: `https://vercel.com/urzhumtsew10/cinema-api/movie/file/${createMovieDto.imgName}`,
     }).save();
   }
 

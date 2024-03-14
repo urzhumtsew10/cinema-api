@@ -29,6 +29,7 @@
     "@nestjs/mongoose": "^10.0.4",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-fastify": "^10.3.3",
+    "@nestjs/typeorm": "^10.0.2",
     "argon2": "^0.31.2",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",

@@ -15,7 +15,7 @@ export class ActorService {
   async create(createActorDto: CreateActorDto) {
     return await new this.actorModule({
       ...createActorDto,
-      imgPath: `http://localhost:3333/actor/img/${createActorDto.imgName}`,
+      imgPath: `https://vercel.com/urzhumtsew10/cinema-api/actor/img/${createActorDto.imgName}`,
     }).save();
   }
 

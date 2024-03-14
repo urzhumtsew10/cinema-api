@@ -27,27 +27,27 @@ export class ActorController {
     return this.actorService.create(createActorDto);
   }
 
-  @Post('/img')
-  @UseInterceptors(
-    FileInterceptor('img', {
-      storage: diskStorage({
-        destination: './tmp/uploads',
-        filename: (req, file, callback) => {
-          callback(null, file.originalname);
-        },
-      }),
-    }),
-  )
-  uploadFile(@UploadedFile() file) {
-    if (file) return true;
-    return false;
-  }
+  // @Post('/img')
+  // @UseInterceptors(
+  //   FileInterceptor('img', {
+  //     storage: diskStorage({
+  //       destination: './uploads',
+  //       filename: (req, file, callback) => {
+  //         callback(null, file.originalname);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // uploadFile(@UploadedFile() file) {
+  //   if (file) return true;
+  //   return false;
+  // }
 
-  @Get('/img/:imgName')
-  getFile(@Param('imgName') img): StreamableFile {
-    const file = createReadStream(join('./tmp/uploads', `${img}`));
-    return new StreamableFile(file);
-  }
+  // @Get('/img/:imgName')
+  // getFile(@Param('imgName') img): StreamableFile {
+  //   const file = createReadStream(join('./uploads', `${img}`));
+  //   return new StreamableFile(file);
+  // }
 
   @Get()
   findAll() {

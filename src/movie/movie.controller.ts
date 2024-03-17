@@ -24,7 +24,8 @@ export class MovieController {
 
   @Post()
   create(@Body() createMovieDto: CreateMovieDto) {
-    return this.movieService.create(createMovieDto);
+    console.log(createMovieDto);
+    // return this.movieService.create(createMovieDto);
   }
 
   // @Get('/file/:videoName')
@@ -33,11 +34,11 @@ export class MovieController {
   //   return new StreamableFile(file);
   // }
 
-  @Get('/poster/:imgName')
-  getPoster(@Param('imgName') img): StreamableFile {
-    const file = createReadStream(join('./uploads', `${img}`));
-    return new StreamableFile(file);
-  }
+  // @Get('/poster/:imgName')
+  // getPoster(@Param('imgName') img): StreamableFile {
+  //   const file = createReadStream(join('./uploads', `${img}`));
+  //   return new StreamableFile(file);
+  // }
 
   // @Post('/file')
   // @UseInterceptors(

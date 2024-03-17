@@ -29,13 +29,13 @@ export class MovieController {
 
   @Get('/file/:videoName')
   getFile(@Param('videoName') video): StreamableFile {
-    const file = createReadStream(join('./uploads', `${video}`));
+    const file = createReadStream(join('./src/uploads', `${video}`));
     return new StreamableFile(file);
   }
 
   @Get('/poster/:imgName')
   getPoster(@Param('imgName') img): StreamableFile {
-    const file = createReadStream(join('./uploads', `${img}`));
+    const file = createReadStream(join('./src/uploads', `${img}`));
     return new StreamableFile(file);
   }
 
@@ -43,7 +43,7 @@ export class MovieController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './uploads',
+        destination: './src/uploads',
         filename: (req, file, callback) => {
           callback(null, file.originalname);
         },
@@ -56,7 +56,7 @@ export class MovieController {
   @UseInterceptors(
     FileInterceptor('img', {
       storage: diskStorage({
-        destination: './uploads',
+        destination: './src/uploads',
         filename: (req, file, callback) => {
           callback(null, file.originalname);
         },

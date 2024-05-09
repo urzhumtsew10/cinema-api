@@ -12,29 +12,11 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
-  const globalPrefix = '';
-  app.setGlobalPrefix(globalPrefix);
-  const whiteList = [
-    'http://localhost:3000',
-    'http://localhost:3000/auth/login',
-    'https://cinema-zeta-ochre.vercel.app/',
-  ];
-
   app.enableCors({
+    allowedHeaders: ['content-type'],
+    origin: ['http://localhost:3000', 'https://cinema-zeta-ochre.vercel.app/'],
+    credentials: true,
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-    origin: function (origin, callback) {
-      if (!origin) {
-        callback(null, true);
-        return;
-      }
-      if (whiteList.includes(origin) || !!origin.match(/yourdomain\.com$/)) {
-        console.log('allowed cors for:', origin);
-        callback(null, true);
-      } else {
-        console.log('blocked cors for', origin);
-        callback(new ImATeapotException('Not allowed by CORS'), false);
-      }
-    },
   });
 
   await app.listen(3333);

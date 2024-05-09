@@ -16,6 +16,7 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   const whiteList = [
     'http://localhost:3000',
+    'http://localhost:3000/auth/login',
     'https://cinema-zeta-ochre.vercel.app/',
   ];
 

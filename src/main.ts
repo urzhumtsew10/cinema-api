@@ -4,17 +4,19 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
   );
-  app.enableCors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE OPTIONS',
-    credentials: true,
-  });
+  app.use(
+    cors({
+      origin: '*',
+      credentials: true,
+    }),
+  );
 
   await app.listen(3333);
 }

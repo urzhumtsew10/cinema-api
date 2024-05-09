@@ -13,10 +13,10 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    allowedHeaders: ['content-type'],
-    origin: ['http://localhost:3000', 'https://cinema-zeta-ochre.vercel.app/'],
-    credentials: true,
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   });
 
   await app.listen(3333);

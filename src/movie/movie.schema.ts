@@ -26,7 +26,7 @@ export class Movie {
   actors: IActor[];
 
   @Prop()
-  videoPath: String;
+  videoId: String;
 
   @Prop()
   imgPath: String;

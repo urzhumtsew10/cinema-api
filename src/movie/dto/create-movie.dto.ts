@@ -22,10 +22,10 @@ export class CreateMovieDto {
   actors: IActor[];
 
   @IsNotEmpty()
-  videoName: String;
+  videoId: String;
 
   @IsNotEmpty()
-  imgName: String;
+  imgPath: String;
 
   @IsNotEmpty()
   restriction: Number;

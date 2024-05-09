@@ -2,7 +2,7 @@ import { IsString } from 'class-validator';
 
 export class CreateActorDto {
   @IsString()
-  imgName: String;
+  imgPath: String;
 
   @IsString()
   name: String;

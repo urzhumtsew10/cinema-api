@@ -20,12 +20,14 @@ export class UserService {
     const userByEmail = (await this.findAll()).find(
       (user) => user.email === userDto.email,
     );
-    const isMatchPasswords = await argon2.verify(
-      userByEmail.password,
-      userDto.password,
-    );
-    if (userByEmail && isMatchPasswords) {
-      return userByEmail;
+    if (userByEmail) {
+      const isMatchPasswords = await argon2.verify(
+        userByEmail.password,
+        userDto.password,
+      );
+      if (isMatchPasswords) {
+        return userByEmail;
+      }
     }
     return false;
   }
